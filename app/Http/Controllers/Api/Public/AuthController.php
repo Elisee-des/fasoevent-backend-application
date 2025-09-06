@@ -17,15 +17,14 @@ class AuthController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'phone' => 'required|string|max:20',
-            'password' => ['required', 'confirmed', Password::defaults()],
+            'password' => ['required'],
         ], [
             'name.required' => 'Le nom est obligatoire.',
             'email.required' => 'L\'email est obligatoire.',
             'email.unique' => 'Cet email est déjà utilisé.',
             'phone.required' => 'Le téléphone est obligatoire.',
             'password.required' => 'Le mot de passe est obligatoire.',
-            'password.confirmed' => 'Les mots de passe ne correspondent pas.',
-        ]);
+            
 
         $user = User::create([
             'id' => \Illuminate\Support\Str::uuid(),
